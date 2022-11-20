@@ -1,0 +1,4 @@
+<view class="popup-wrap {{show && 'active'}}" bindtap="handleClick">
+    <slot>
+    </slot>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+      "popup": "/components/Popup/Popup"
+  },
+  "navigationStyle": "custom"
+}

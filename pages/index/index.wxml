@@ -1,0 +1,106 @@
+<view class="home">
+    <view class="page-header-wrap" style="height: {{statusBarHeight + navBarHeight}}px;">
+        <view class="page-header">
+            <!-- 状态栏 -->
+            <view class="status-bar" style="height: {{statusBarHeight}}px;"></view>
+            <!--   导航栏 -->
+            <view class="nav" style="height: {{navBarHeight}}px;">
+                <view class="message-wrap">
+                    <image class="message" src="../../static/img/meeage.png"></image>
+                    <view class="icon">{{UnreadCount}}</view>
+                </view>
+                <view class="title">早上好，张先生</view>
+            </view>
+        </view>
+    </view>
+    <!-- banner -->
+    <swiper autoplay="true" interval="1000" indicator-dots indicator-active-color="#07c160">
+        <swiper-item>
+            <image mode="aspectFill" class="banner-img" src="../../static/img/banner.png"></image>
+        </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" class="banner-img" src="../../static/img/banner.png"></image>
+        </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" class="banner-img" src="../../static/img/banner.png"></image>
+        </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" class="banner-img" src="../../static/img/banner.png"></image>
+        </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" class="banner-img" src="../../static/img/banner.png"></image>
+        </swiper-item>
+        <swiper-item>
+            <image mode="aspectFill" class="banner-img" src="../../static/img/banner.png"></image>
+        </swiper-item>
+    </swiper>
+
+    <!-- 功能1 -->
+    <view class="fun-list">
+        <view wx:for="{{funList1}}" wx:key="id" class="fun-item">
+            <image class="fun-pic" src="{{item.pic}}"></image>
+            <view class="fun-name">{{item.name}}</view>
+        </view>
+    </view>
+
+    <!-- 功能2 -->
+    <view class="fun-two">
+        <view wx:for="{{funList2}}" wx:key="id" class="fun-two-item" data-name="{{item.name}}" bindtap="handleClickFunc">
+            <image wx:if="{{item.pic}}" class="fun-two-pic" src="{{item.pic}}"></image>
+            <view wx:if="{{item.name}}" class="fun-two-name">{{item.name}}</view>
+        </view>
+    </view>
+
+    <view class="tabbar">
+        <view class="tabbar-item {{selected === 0 && 'active'}}" data-index="0" bindtap="change">
+            <view class="container">
+                <image src="/static/tabbar/work_log{{selected === 0 ? '-active' : ''}}.png" class="tabbar-pic"></image>
+                <view class="tabbar-name">工作</view>
+            </view>
+        </view>
+
+        <view class="tabbar-item {{selected === 1 && 'active'}}" data-index="1" bindtap="change">
+            <view class="container">
+                <image src="/static/tabbar/assistant{{selected === 1 ? '-active' : ''}}.png" class="tabbar-pic"></image>
+                <view class="tabbar-name">助手</view>
+            </view>
+        </view>
+
+        <view class="tabbar-item">
+            <view class="container big-icon">
+                <image src="/static/tabbar/add-active.png" class="tabbar-pic"></image>
+                <view class="tabbar-name">常用</view>
+            </view>
+        </view>
+
+        <view class="tabbar-item {{selected === 3 && 'active'}}" data-index="3" bindtap="change">
+            <view class="container">
+                <image src="/static/tabbar/analysis{{selected === 3 ? '-active' : ''}}.png" class="tabbar-pic"></image>
+                <view class="tabbar-name">分析</view>
+            </view>
+        </view>
+
+
+        <view class="tabbar-item {{selected === 4 && 'active'}}" data-index="4" bindtap="change">
+            <view class="container">
+                <image src="/static/tabbar/me{{selected === 4 ? '-active' : ''}}.png" class="tabbar-pic"></image>
+                <view class="tabbar-name">我</view>
+            </view>
+        </view>
+
+
+    </view>
+
+    <!-- 弹出层 -->
+    <popup show="{{showPopup}}" bindclose="handleClosePopup">
+        <view class="popup-box">
+            <view class="title">功能B</view>
+            <view class="func-list3">
+                <view wx:for="{{funList2}}" wx:key="id" class="popup-fun-item">
+                    <image class="fun-pic" src="{{item.pic}}"></image>
+                    <view class="fun-name">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+    </popup>
+</view>
